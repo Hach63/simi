@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarité d'images</title>
+</head>
+<body>
+    <h1>Télécharger une image pour trouver des images similaires</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Télécharger</button>
+    </form>
+
+    {% if filename %}
+        <h2>Image téléchargée :</h2>
+        <img src="{{ url_for('static', filename='images/' + filename) }}" alt="Image téléchargée" width="200">
+        <h2>Images similaires :</h2>
+        <ul>
+            {% for img in result %}
+                <li><img src="{{ url_for('static', filename='images/' + img) }}" alt="{{ img }}" width="100"></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
