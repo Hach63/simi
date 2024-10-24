@@ -15,6 +15,7 @@
     {% if filename %}
         <h2>Image téléchargée :</h2>
         <img src="{{ url_for('static', filename='images/' + filename) }}" alt="Image téléchargée" width="200">
+        <h2>Catégorie détectée : {{ category }}</h2>
         <h2>Images similaires :</h2>
         <ul>
             {% for img in result %}
